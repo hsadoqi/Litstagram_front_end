@@ -40,14 +40,34 @@
 
 .toolbar_navigation-items li {
     padding: 0 0.5rem;
-
 }
 
 .spacer {
-    flex: 0.5;
+    flex: 1;
+}
+
+.spacer-icon {
+    flex: 0.75;
 }
 
 .toolbar_logo a:hover, 
 .toolbar_logo a:active {
     font-size: 1.6rem;
 }
+
+.toolbar_user-icon img {
+    height: auto;
+    width: auto;
+    max-height: 50px;
+    max-width: 150px;
+    border-radius: 50%;
+}
+
+.toolbar_user-icon img:hover, 
+.toolbar_user-icon img:active{
+    border: 3px solid white;
+    height: auto;
+    width: auto;
+    max-height: 60px;
+    max-width: 175px;
+} 

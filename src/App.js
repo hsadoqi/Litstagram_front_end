@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
-import { Route, Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Homepage from './Homepage/Homepage'
 import Feed from './Feed/Feed'
 import Toolbar from './Toolbar/Toolbar'
+import Login from './Login/Login'
+import Signup from './Signup/Signup'
 
 class App extends Component {
   render() {
@@ -13,10 +14,10 @@ class App extends Component {
         <Toolbar/>
         <main style={{marginTop: '64px'}}>
         </main>
-        <Switch>
-          <Route path='/feed' component={Feed}/>
-          <Route path='/homepage' component={Homepage}/>
-        </Switch>
+        <Route path='/feed' component={Feed}/>
+        <Route exact path='/' component={Homepage}/>
+        <Route path='/login' component={Login}/>
+        <Route path='/signup' component={Signup}/>
       </div>
     );
   }
