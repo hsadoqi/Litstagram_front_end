@@ -13,7 +13,7 @@ export default class Feed extends Component {
 
         return (
             <div className="ui link cards">
-                <Card.Group itemsPerRow={3} className="card-group">
+                <Card.Group itemsPerRow={3}>
                      {arrayOfPosts}
                 </Card.Group>
   	        </div>
