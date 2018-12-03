@@ -1,6 +1,6 @@
 .login-form {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
@@ -8,5 +8,5 @@
 }
 
 .login-button {
-    top: 120%;
+    top: 110%;
 }

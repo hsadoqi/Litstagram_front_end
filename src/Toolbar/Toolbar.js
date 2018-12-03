@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Toolbar.css'
 import DropdownMenu from '../Dropdown/Dropdown'
+import { Link } from 'react-router-dom'
 
 class Toolbar extends Component {
 
@@ -12,7 +13,7 @@ class Toolbar extends Component {
                     <div className="toolbar_logo"><a href='/'>Litstagram</a></div>
                     <div className='spacer-icon'/>
                     <div className="toolbar_user-icon">
-                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt="" onClick={this.handleClick}/>
+                        <Link to='/profile'><img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt=""/></Link>
                     </div>
                     <DropdownMenu/>
                     <div className='spacer'/>

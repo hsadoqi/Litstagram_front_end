@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom'
-import Homepage from './Homepage/Homepage'
-import Feed from './Feed/Feed'
+import LandingPage from './LandingPage/LandingPage'
+import Profile from './Profile/Profile'
 import Toolbar from './Toolbar/Toolbar'
-import Login from './Login/Login'
+import Login from './Login/LogIn'
 import Signup from './Signup/Signup'
 
 class App extends Component {
@@ -14,8 +14,8 @@ class App extends Component {
         <Toolbar/>
         <main style={{marginTop: '64px'}}>
         </main>
-        <Route path='/feed' component={Feed}/>
-        <Route exact path='/' component={Homepage}/>
+        <Route path='/:id/profile' component={Profile}/>
+        <Route exact path='/' component={LandingPage}/>
         <Route path='/login' component={Login}/>
         <Route path='/signup' component={Signup}/>
       </div>
