@@ -16,7 +16,7 @@ export default class Profile extends Component {
     }
 
     componentDidMount(){
-        axios.get(`http://localhost:3000/users/${userId}`)
+        axios.get(`http://localhost:3000//users/${userId}`)
         .then(user => {
             let attributes = user.data.data.attributes
             this.setState({
@@ -30,7 +30,7 @@ export default class Profile extends Component {
 
     render(){
         userId = this.props.history.location.pathname[1]
-        console.log(this.state.posts)
+
         return (
             <React.Fragment>
                 <div className='profile-info'>
@@ -39,6 +39,8 @@ export default class Profile extends Component {
                         <h3>{this.state.username}</h3>
                         <p>{this.state.posts.length} Posts </p>
                         <h4>{this.state.firstName} {this.state.lastName}</h4>
+                        <h5>Bio:</h5>
+                        <p>I like pool.</p>
                     </div>
                 </div>
                 <Feed posts={this.state.posts} user={this.state.username}/>
