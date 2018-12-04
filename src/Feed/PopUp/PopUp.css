@@ -46,7 +46,7 @@ h1 {
     border: 10px solid bisque
   }
 
-  .popup-content p {
+  .popup-content div {
     background: bisque;
     width: 500px;
     border: 10px solid bisque

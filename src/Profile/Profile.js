@@ -4,32 +4,32 @@ import './Profile.css'
 import Feed from '../Feed/Feed'
 
 let userId 
-// const USERS_URL = 'http://localhost:3000/users'
+const USERS_URL = 'http://localhost:3000/users'
 
 export default class Profile extends Component {
     state = {
         username: '',
-        firstName: '',
-        lastName: '',
+        fullName: '',
         posts: [],
         img: 'https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg'
     }
 
     componentDidMount(){
-        axios.get(`http://localhost:3000//users/${userId}`)
+        fetch(`${USERS_URL}/${userId}`)
+        .then(res => res.json())
         .then(user => {
-            let attributes = user.data.data.attributes
             this.setState({
-                firstName: attributes["first-name"],
-                lastName: attributes["last-name"],
-                username: attributes.username, 
-                posts: attributes.posts
-            })
+            username: user.data.attributes.username, 
+            fullName: user.data.attributes.fullname, 
+            posts: user.data.attributes.posts, 
         })
+    })
     }
 
     render(){
-        userId = this.props.history.location.pathname[1]
+        userId = localStorage.getItem('token')
+        console.log(typeof userId)
+        console.log(this.state)
 
         return (
             <React.Fragment>
