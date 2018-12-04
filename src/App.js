@@ -102,7 +102,7 @@ createUser = userInfo => {
         <Route exact path='/' component={LandingPage}/>
         <Route path='/login' render={() => (<Login handleSubmit={this.logInSubmitHandler}/>)}/>
         <Route path='/signup' render={() => (<Signup handleSubmit={this.signUpSubmitHandler}/>)}/>
-        <Route path='/explore' component={Explore} />
+        <Route path='/explore' render={()=> (<Explore/>)} />
       </div>
     );
   }

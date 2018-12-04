@@ -5,7 +5,7 @@ import './ImageCard.css'
 export default class ImageCard extends Component {
 
     render(){
-        // console.log(this.props.post)
+        console.log(this.props.post)
         return (
               <Card onClick={(e) => this.props.handleClick(e, this.props.post)}>
                     <Image src={this.props.post.img}/>
