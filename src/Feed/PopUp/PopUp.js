@@ -15,7 +15,7 @@ export default class PopUp extends Component {
     render(){
         // console.log(this.props.post)
         console.log(this.props.post.comments)
-        let arrayOfComments = this.props.post.comments.map((comment) => <li><strong>{comment["commenter-name"]}</strong>: {comment.content}</li>)
+        let arrayOfComments = this.props.post.comments.map((comment) => <li key={comment.id}><a href={"/users/" + comment["commenter-id"] + "/profile"}><strong>{comment["commenter-name"]}</strong></a> : {comment.content} </li>)
 
         return (
             <div className='popup' onClick={this.props.handleClick}>
@@ -24,7 +24,7 @@ export default class PopUp extends Component {
                         <img src={this.props.post.img} alt=""/>
                         <div>
                             <ul style={{listStyleType: 'none'}}>
-                                <li><strong>{this.props.user}</strong>: {this.props.post.caption}</li>
+                                <li ><strong>{this.props.user}</strong>: {this.props.post.caption}</li>
                                 {arrayOfComments}
                             </ul>
                         </div>

@@ -33,6 +33,7 @@ class Profile extends Component {
     }
 
     render(){
+        console.log(this.props)
         return (
             <React.Fragment>
                 <div className='profile-info'>

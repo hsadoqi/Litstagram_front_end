@@ -6,6 +6,7 @@ import Profile from './Profile/Profile'
 import Toolbar from './Toolbar/Toolbar'
 import Login from './Login/LogIn'
 import Signup from './Signup/Signup'
+import Explore from './Explore/Explore'
 
 const USERS_URL = 'http://localhost:3000/users'
 
@@ -101,6 +102,7 @@ createUser = userInfo => {
         <Route exact path='/' component={LandingPage}/>
         <Route path='/login' render={() => (<Login handleSubmit={this.logInSubmitHandler}/>)}/>
         <Route path='/signup' render={() => (<Signup handleSubmit={this.signUpSubmitHandler}/>)}/>
+        <Route path='/explore' component={Explore} />
       </div>
     );
   }
