@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, withRouter} from 'react-router-dom'
 import LandingPage from './LandingPage/LandingPage'
 import Profile from './Profile/Profile'
 import Toolbar from './Toolbar/Toolbar'
@@ -49,34 +49,43 @@ logInSubmitHandler = (e, userInfo) => {
 
 signUpSubmitHandler = (e, userInfo) => {
   e.preventDefault()
-  console.log(userInfo)
   this.createUser(userInfo)
 }
 
 createUser = userInfo => {
+  console.log(userInfo)
+  console.log(USERS_URL)
   fetch(USERS_URL, {
     method: 'POST', 
     headers: {
       "Content-type": 'application/json', 
       "Accepts": 'application/json'
     }, 
-    body: JSON.stringify({ fullname: userInfo.fullName, username: userInfo.username, password: userInfo.password})
+    body: JSON.stringify({
+      user: {
+        fullname: userInfo.fullName,
+        username: userInfo.username,
+        password: userInfo.password
+      }
+    })
   }).then(res => res.json())
   .then(user => {
     localStorage.setItem('token', user.id)
     this.setState({
       user: user
     })
+    this.props.history.push(`/users/${user.id}/profile`)
   })
 }
 
   render() {
+    console.log(this.state)
     return (
       <div className="App">
-        <Toolbar/>
+        <Toolbar user={this.state.user}/>
         <main style={{marginTop: '64px'}}>
         </main>
-        <Route path='/:id/profile' render={()=> (<Profile user={this.state.user}/>)}/>
+        <Route path='/users/:id/profile' render={()=> (<Profile user={this.state.user}/>)}/>
         <Route exact path='/' component={LandingPage}/>
         <Route path='/login' component={Login}/>
         <Route path='/signup' render={() => (<Signup handleSubmit={this.signUpSubmitHandler}/>)}/>
@@ -85,4 +94,4 @@ createUser = userInfo => {
   }
 }
 
-export default App;
+export default withRouter(App);

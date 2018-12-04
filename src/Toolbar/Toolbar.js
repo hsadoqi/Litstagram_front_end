@@ -12,10 +12,11 @@ class Toolbar extends Component {
                     <div></div>
                     <div className="toolbar_logo"><a href='/'>Litstagram</a></div>
                     <div className='spacer-icon'/>
+                    {this.props.user ? 
                     <div className="toolbar_user-icon">
                         <Link to='/profile'><img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt=""/></Link>
-                    </div>
                     <DropdownMenu/>
+                    </div> : null }
                     <div className='spacer'/>
                     <div className='toolbar_navigation-items'>
                         <ul>
