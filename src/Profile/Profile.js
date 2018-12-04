@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import './Profile.css'
 import Feed from '../Feed/Feed'
+import { withRouter } from 'react-router-dom'
 
-let userId 
+// let userId 
 const USERS_URL = 'http://localhost:3000/users'
 
-export default class Profile extends Component {
+class Profile extends Component {
     state = {
+        id: '',
         username: '',
         fullName: '',
         posts: [],
@@ -15,22 +17,39 @@ export default class Profile extends Component {
     }
 
     componentDidMount(){
-        fetch(`${USERS_URL}/${userId}`)
+        let id = Number(this.props.match.params.id)
+        console.log(id)
+
+        fetch(`${USERS_URL}/${id}`)
         .then(res => res.json())
         .then(user => {
             this.setState({
-            username: user.data.attributes.username, 
-            fullName: user.data.attributes.fullname, 
-            posts: user.data.attributes.posts, 
+                id: user.data.id, 
+                fullName: user.data.attributes.fullname, 
+                username: user.data.attributes.username,
+                posts: user.data.attributes.posts
+            })
         })
-    })
+        // use match params
+        // on mount make a fetch to that user_id from the location props
+        // and set that user in profile's state
+        // if we want to be able to view other's profiles
+
+        // console.log(this.props.location)
+
+        // this.setState({
+        //     user: {
+        //         id: this.props.user.user_id, 
+        //         username: this.props.user.username, 
+        //         fullName: this.props.user.fullname
+        //     }
+        // })
+        // this.getUserInfo()
     }
 
     render(){
-        userId = localStorage.getItem('token')
-        console.log(typeof userId)
         console.log(this.state)
-
+        console.log(this.props.user)
         return (
             <React.Fragment>
                 <div className='profile-info'>
@@ -48,3 +67,5 @@ export default class Profile extends Component {
         )
     }
 }
+
+export default withRouter(Profile)

@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import {Form, Button} from 'semantic-ui-react'
 import './Signup.css'
-// import axios from 'axios'
-
-// const USERS_URL = 'http://localhost:3000/api/v1/users'
 
 export default class Signup extends Component {
     state = {

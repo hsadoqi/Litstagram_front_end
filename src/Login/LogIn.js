@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form } from 'semantic-ui-react'
 import './Login.css'
-// import axios from 'axios'
-
-// const USERS_URL = 'http://localhost:3000/users'
 
 class Login extends Component {
     state = {
@@ -18,24 +15,11 @@ class Login extends Component {
         })
     }
 
-    // handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     axios.get(USERS_URL)
-    //     .then(user => user.data.data.map((user) => {
-    //         if(user.attributes.username === this.state.username && user.attributes.password === this.state.password){
-    //             return this.props.history.replace(`/${user.id}/profile`)
-    //         } else {
-    //             console.log('wrong')
-    //             // fix error messages
-    //         }
-    //     }))
-    // }
-
     render(){
-
+        console.log(this.state)
         return (
             <div className="login-form">
-                <Form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+                <Form onSubmit={(e) => this.props.handleSubmit(e, this.state)} onChange={this.handleChange}>
                     <Form.Field>
                         <label>Username</label>
                         <input placeholder='Username' name="username" />
