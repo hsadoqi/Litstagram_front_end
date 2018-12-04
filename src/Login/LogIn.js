@@ -16,7 +16,6 @@ class Login extends Component {
     }
 
     render(){
-        console.log(this.state)
         return (
             <div className="login-form">
                 <Form onSubmit={(e) => this.props.handleSubmit(e, this.state)} onChange={this.handleChange}>

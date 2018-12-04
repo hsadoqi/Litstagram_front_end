@@ -14,13 +14,19 @@ export default class PopUp extends Component {
 
     render(){
         // console.log(this.props.post)
+        console.log(this.props.post.comments)
+        let arrayOfComments = this.props.post.comments.map((comment) => <li><strong>{comment["commenter-name"]}</strong>: {comment.content}</li>)
+
         return (
-            <div className='popup'>
-                <div className='popup_inner' onClick={this.props.handleClick}>
+            <div className='popup' onClick={this.props.handleClick}>
+                <div className='popup_inner'>
                     <div className='popup-content'>
                         <img src={this.props.post.img} alt=""/>
                         <div>
-                            <p><strong>{this.props.user}</strong>: {this.props.post.caption}</p>
+                            <ul style={{listStyleType: 'none'}}>
+                                <li><strong>{this.props.user}</strong>: {this.props.post.caption}</li>
+                                {arrayOfComments}
+                            </ul>
                         </div>
                     </div>
                 </div>

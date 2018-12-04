@@ -30,26 +30,9 @@ class Profile extends Component {
                 posts: user.data.attributes.posts
             })
         })
-        // use match params
-        // on mount make a fetch to that user_id from the location props
-        // and set that user in profile's state
-        // if we want to be able to view other's profiles
-
-        // console.log(this.props.location)
-
-        // this.setState({
-        //     user: {
-        //         id: this.props.user.user_id, 
-        //         username: this.props.user.username, 
-        //         fullName: this.props.user.fullname
-        //     }
-        // })
-        // this.getUserInfo()
     }
 
     render(){
-        console.log(this.state)
-        console.log(this.props.user)
         return (
             <React.Fragment>
                 <div className='profile-info'>

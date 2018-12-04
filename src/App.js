@@ -55,7 +55,7 @@ logInUser = userInfo => {
             user: user
           })
           localStorage.setItem("token", user.user_id)
-          // this.props.history.push(`/users/${user.user_id}/profile`)
+          this.props.history.push(`/users/${user.user_id}/profile`)
       })
 }
 
@@ -67,8 +67,6 @@ signUpSubmitHandler = (e, userInfo) => {
 }
 
 createUser = userInfo => {
-  console.log(userInfo)
-  console.log(USERS_URL)
   fetch(USERS_URL, {
     method: 'POST', 
     headers: {

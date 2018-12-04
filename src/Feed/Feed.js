@@ -4,7 +4,7 @@ import { Card } from 'semantic-ui-react';
 import './Feed.css'
 // import Modal from 'react-awesome-modal'
 import PopUp from './PopUp/PopUp'
-import axios from 'axios'
+// import axios from 'axios'
 
 export default class Feed extends Component {
     state = {
@@ -14,21 +14,26 @@ export default class Feed extends Component {
 
     handleClick = (e, post) => {
         // console.log(post)
-        axios.get(`http://localhost:3000/images/${post.id}`)
-        .then(post => console.log(post.data))
-            // this.setState({
-            // visible: !this.state.visible,
-            // selectedPost: post.data.data.attributes
-            // // })
-        // })
+        if(!this.state.visible){
+            fetch(`http://localhost:3000/images/${post.id}`)
+            .then(res => res.json())
+            .then(post => {
+                this.setState({
+                visible: !this.state.visible,
+                selectedPost: post.data.attributes
+                })
+            })
+        } else {
+            this.setState({
+                visible: !this.state.visible
+            })
+        }
     }
 
     render(){
         let arrayOfPosts = this.props.posts.map((post) =>
             <ImageCard key={post.id} post={post} user={this.props.user} handleClick={this.handleClick}/>
             )
-        // console.log(this.props.posts)
-        // console.log(this.state.selectedPost)
 
         return (
             <div className="ui link cards">
