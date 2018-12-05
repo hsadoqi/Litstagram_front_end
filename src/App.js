@@ -22,8 +22,8 @@ class App extends Component {
       // must add fetch for the proper api that holds that particular user's information
       fetch('http://localhost:3000/current_user', {
         headers: {
-          "Content-type": 'application/json', 
-          "Accepts": 'application/json', 
+          "Content-type": 'application/json',
+          "Accepts": 'application/json',
           Authorization: `${token}`
         }
       }).then(res => res.json())
@@ -45,11 +45,11 @@ logInSubmitHandler = (e, userInfo) => {
 
 logInUser = userInfo => {
   fetch('http://localhost:3000/login', {
-    method: 'POST', 
+    method: 'POST',
     headers: {
-      "Content-type": 'application/json', 
+      "Content-type": 'application/json',
       Accepts: 'application/json'
-    }, 
+    },
     body: JSON.stringify({user: userInfo })
   }).then(res => res.json())
   .then(user => {
@@ -70,11 +70,11 @@ signUpSubmitHandler = (e, userInfo) => {
 
 createUser = userInfo => {
   fetch(USERS_URL, {
-    method: 'POST', 
+    method: 'POST',
     headers: {
-      "Content-type": 'application/json', 
+      "Content-type": 'application/json',
       "Accepts": 'application/json'
-    }, 
+    },
     body: JSON.stringify({
       user: {
         fullname: userInfo.fullName,

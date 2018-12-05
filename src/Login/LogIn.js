@@ -4,7 +4,7 @@ import './Login.css'
 
 class Login extends Component {
     state = {
-        username: '', 
+        username: '',
         password: ''
     }
 
@@ -25,7 +25,7 @@ class Login extends Component {
                     </Form.Field>
                     <Form.Field>
                         <label>Password</label>
-                        <input placeholder='Password' name='password'/>
+                        <input placeholder='Password' name='password'type="password"/>
                     </Form.Field>
                         <Button type='submit' className="login-button">Submit</Button>
                 </Form>

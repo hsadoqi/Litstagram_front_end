@@ -3,8 +3,9 @@ import React, { Component } from 'react'
 import './Profile.css'
 import Feed from '../Feed/Feed'
 import { withRouter } from 'react-router-dom'
+// import PhotoForm from './PhotoForm/PhotoForm'
 
-// let userId 
+// let userId
 const USERS_URL = 'http://localhost:3000/users'
 
 class Profile extends Component {
@@ -24,8 +25,8 @@ class Profile extends Component {
         .then(res => res.json())
         .then(user => {
             this.setState({
-                id: user.data.id, 
-                fullName: user.data.attributes.fullname, 
+                id: user.data.id,
+                fullName: user.data.attributes.fullname,
                 username: user.data.attributes.username,
                 posts: user.data.attributes.posts
             })
@@ -46,7 +47,9 @@ class Profile extends Component {
                         <p>I like pool.</p>
                     </div>
                 </div>
+
                 <Feed posts={this.state.posts} user={this.state.username}/>
+
             </React.Fragment>
         )
     }
