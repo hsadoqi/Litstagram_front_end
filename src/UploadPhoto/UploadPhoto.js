@@ -18,17 +18,12 @@ export default class UploadPhoto extends Component {
 
       })
     }
-
-
+    
       handleSubmit = (event) =>{
         event.preventDefault()
         console.log("hitting handleSubmit");
         this.postPhoto(this.state)
-
-
-
       }
-
 
     showWidget = (widget) =>{
         widget.open()
