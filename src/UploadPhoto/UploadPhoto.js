@@ -1,34 +1,14 @@
 import React, { Component } from 'react'
 import './UploadPhoto.css'
 import { Form } from 'semantic-ui-react'
-import PhotoForm from '../PhotoForm/PhotoForm.js'
+// import PhotoForm from '../PhotoForm/PhotoForm.js'
 
 
 let image
 export default class UploadPhoto extends Component {
     state = {
         img: null,
-        caption:""
     }
-
-    handleFormChange = (event)=>{
-      // console.log(event.target.value);
-      this.setState({
-        [event.target.name]: event.target.value
-
-      })
-    }
-
-
-      handleSubmit = (event) =>{
-        event.preventDefault()
-        console.log("hitting handleSubmit");
-        this.postPhoto(this.state)
-
-
-
-      }
-
 
     showWidget = (widget) =>{
         widget.open()
@@ -40,13 +20,14 @@ export default class UploadPhoto extends Component {
     if (resultEvent.event === 'success'){
         widget.close()
         this.setState({ img: resultEvent.info.secure_url})
+        this.props.post(this.state.img)
       // route them to the necesary place
         // .then(this.props.history.push(`/profile`))
         }
     }
 
     postPhoto = (userObj) =>{
-      console.log("userObj",userObj);
+      // console.log("userObj",userObj);
     let token = localStorage.getItem('token')
     // console.log("This my token",token);
     fetch('http://localhost:3000/images', {
@@ -56,7 +37,6 @@ export default class UploadPhoto extends Component {
       },
       body: JSON.stringify({
         image: {
-          caption: userObj.caption,
           img: userObj.img,
           poster_id: `${Number(token)}`
         }
@@ -64,6 +44,9 @@ export default class UploadPhoto extends Component {
     })
     .then(r => r.json()).then("Whats going on in my fetch",console.log)
     }
+
+
+
 
     render(){
         // console.log("this is your photo",this.state.photo)
@@ -82,9 +65,6 @@ export default class UploadPhoto extends Component {
 
 
              {image}
-              <div>
-                <PhotoForm handleSubmit={this.handleSubmit} handleFormChange={this.handleFormChange} value={this.state.caption} />
-              </div>
 
             </div>
         )

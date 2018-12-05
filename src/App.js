@@ -8,6 +8,7 @@ import Login from './Login/LogIn'
 import Signup from './Signup/Signup'
 import Explore from './Explore/Explore'
 import UploadPhoto from './UploadPhoto/UploadPhoto'
+import PhotoForm from './PhotoForm/PhotoForm.js'
 
 const USERS_URL = 'http://localhost:3000/users'
 
@@ -103,7 +104,7 @@ createUser = userInfo => {
         <Route path='/login' render={() => (<Login handleSubmit={this.logInSubmitHandler}/>)}/>
         <Route path='/signup' render={() => (<Signup handleSubmit={this.signUpSubmitHandler}/>)}/>
         <Route path='/explore' render={()=> (<Explore currentUser={this.state.user}/>)} />
-        <Route path='/addphoto' render={() => (<UploadPhoto user={this.state.user}/>)}/>
+        <Route path='/addphoto' render={() => (<PhotoForm user={this.state.user}/>)}/>
       </div>
     );
   }

@@ -1,21 +1,60 @@
 import React from 'react'
 import { Form } from 'semantic-ui-react'
-// import UploadPhoto from './UploadPhoto/UploadPhoto'
+import UploadPhoto from '../UploadPhoto/UploadPhoto.js'
 
 export default class PhotoForm extends React.Component {
+  state = {
+    caption:"",
+    img:null
+  }
+  handleFormChange = (event)=>{
+    console.log(event.target.value);
+    this.setState({
+      [event.target.name]: event.target.value
 
+    })
+  }
+  handleSubmit = (event) =>{
+    event.preventDefault()
+    console.log("What this b",this.state);
+    let token = localStorage.getItem('token')
+   // console.log("This my token",token);
+   fetch('http://localhost:3000/images', {
+     method: 'POST',
+     headers: {
+       "Content-type": 'application/json',
+     },
+     body: JSON.stringify({
+       image: {
+         caption: this.state.caption,
+         img: this.state.img,
+         poster_id: `${Number(token)}`
+       }
+     })
+   })
+   .then(r => r.json()).then("Whats going on in my fetch",console.log)
+   }
+
+
+
+postPhoto =(img)=>{
+  // console.log(img);
+  this.setState({img})
+}
   render() {
+    console.log("this is my state",this.state.img);
     return (
       <div>
 
-        <form onSubmit={this.props.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
+          <UploadPhoto post={this.postPhoto}/>
           <label>
-          <input type="text" name="caption" value={this.props.value} onChange={this.props.handleFormChange}/>
+          <input type="text" name="caption" value={this.state.caption} onChange={this.handleFormChange} placeholder="Whats on your mind?"/>
           </label>
           <input type="submit" value="submit"/>
 
-        </form>
 
+        </form>
       </div>
     )
   }
