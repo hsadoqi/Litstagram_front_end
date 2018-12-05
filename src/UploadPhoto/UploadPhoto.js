@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
 import './UploadPhoto.css'
-import { Form } from 'semantic-ui-react'
-import PhotoForm from '../PhotoForm/PhotoForm.js'
 
 
 let image
 export default class UploadPhoto extends Component {
     state = {
         img: null,
-        caption:""
     }
 
+<<<<<<< HEAD
     handleFormChange = (event)=>{
       // console.log(event.target.value);
       this.setState({
@@ -25,6 +23,8 @@ export default class UploadPhoto extends Component {
         this.postPhoto(this.state)
       }
 
+=======
+>>>>>>> c1a414a99298ad61ea0d7f6af3e6ecbb9f94e197
     showWidget = (widget) =>{
         widget.open()
       }
@@ -33,32 +33,35 @@ export default class UploadPhoto extends Component {
     // console.log("Steven holla",resultEvent);
     // console.log(widget);
     if (resultEvent.event === 'success'){
-        widget.close()
-        this.setState({ img: resultEvent.info.secure_url})
-      // route them to the necesary place
+          widget.close()
+          this.setState({ img: resultEvent.info.secure_url}
+        )
+        this.props.post(this.state.img)
         // .then(this.props.history.push(`/profile`))
         }
     }
 
-    postPhoto = (userObj) =>{
-      console.log("userObj",userObj);
-    let token = localStorage.getItem('token')
-    // console.log("This my token",token);
-    fetch('http://localhost:3000/images', {
-      method: 'POST',
-      headers: {
-        "Content-type": 'application/json',
-      },
-      body: JSON.stringify({
-        image: {
-          caption: userObj.caption,
-          img: userObj.img,
-          poster_id: `${Number(token)}`
-        }
-      })
-    })
-    .then(r => r.json()).then("Whats going on in my fetch",console.log)
-    }
+    // postPhoto = (userObj) =>{
+    //   // console.log("userObj",userObj);
+    // let token = localStorage.getItem('token')
+    // // console.log("This my token",token);
+    // fetch('http://localhost:3000/images', {
+    //   method: 'POST',
+    //   headers: {
+    //     "Content-type": 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     image: {
+    //       img: userObj.img,
+    //       poster_id: `${Number(token)}`
+    //     }
+    //   })
+    // })
+    // .then(r => r.json()).then("Whats going on in my fetch",console.log)
+    // }
+
+
+
 
     render(){
         // console.log("this is your photo",this.state.photo)
@@ -77,9 +80,6 @@ export default class UploadPhoto extends Component {
 
 
              {image}
-              <div>
-                <PhotoForm handleSubmit={this.handleSubmit} handleFormChange={this.handleFormChange} value={this.state.caption} />
-              </div>
 
             </div>
         )
