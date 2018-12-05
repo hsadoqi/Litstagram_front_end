@@ -7,7 +7,6 @@ import Toolbar from './Toolbar/Toolbar'
 import Login from './Login/LogIn'
 import Signup from './Signup/Signup'
 import Explore from './Explore/Explore'
-import UploadPhoto from './UploadPhoto/UploadPhoto'
 import PhotoForm from './PhotoForm/PhotoForm.js'
 
 const USERS_URL = 'http://localhost:3000/users'
