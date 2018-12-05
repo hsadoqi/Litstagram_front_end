@@ -14,15 +14,12 @@ export default class Feed extends Component {
 
     handleClick = (e, post) => {
         // console.log(post)
+        console.log(post)
         if(!this.state.visible){
-            fetch(`http://localhost:3000/images/${post.id}`)
-            .then(res => res.json())
-            .then(post => {
                 this.setState({
                 visible: !this.state.visible,
-                selectedPost: post.data.attributes
+                selectedPost: post.attributes
                 })
-            })
         } else {
             this.setState({
                 visible: !this.state.visible
@@ -34,7 +31,7 @@ export default class Feed extends Component {
         let arrayOfPosts = this.props.posts.map((post) =>
             <ImageCard key={post.id} post={post} user={this.props.user} handleClick={this.handleClick}/>
             )
-
+        
         return (
             <div className="ui link cards">
                 {this.state.visible ? <PopUp key={this.state.selectedPost.id} post={this.state.selectedPost} user={this.props.user} handleClick={this.handleClick}/> : null}

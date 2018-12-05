@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import './Dropdown.css'
 import {Dropdown} from 'semantic-ui-react'
+import {withRouter} from 'react-router-dom'
 
-export default class DropdownMenu extends Component {
+class DropdownMenu extends Component {
 
     handleClick = (e) => {
-        console.log(e.target.innerHTML)
+        if(e.target.innerHTML === "Add Photo"){
+            this.props.history.push('/addphoto')
+        }
     }
 
     render(){
@@ -20,3 +23,5 @@ export default class DropdownMenu extends Component {
         )
     }
 }
+
+export default withRouter(DropdownMenu)

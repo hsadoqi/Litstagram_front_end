@@ -24,14 +24,25 @@ export default class Explore extends React.Component {
         })
     }
 
-    render(){
+    handleClick = (e, post) => {
+        if(!this.state.visible){
+            this.setState({
+                visible: !this.state.visible,
+                selectedPost: post
+            })
+        } else {
+            this.setState({
+                visible: !this.state.visible
+            })
+        }
+    }
 
-        let arrayOfImages = this.state.images.map((image) => <ImageCard key={image.id} post={image.attributes}/>)
-        console.log(this.state)
-        console.log(arrayOfImages)
+    render(){
+        let arrayOfImages = this.state.images.map((image) => <ImageCard key={image.id} post={image} user={image.attributes.poster.username} handleClick={this.handleClick}/>)
+
         return (
             <div className="ui link cards">
-                {this.state.visible ? <PopUp key={this.state.selectedPost.id} /> : null}
+                {this.state.visible ? <PopUp key={this.state.selectedPost.id} post={this.state.selectedPost.attributes} user={this.state.selectedPost.attributes.poster.username} handleClick={this.handleClick}/> : null}
                 <Card.Group itemsPerRow={3}>
                      {arrayOfImages}
                 </Card.Group>
