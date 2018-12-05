@@ -93,17 +93,16 @@ createUser = userInfo => {
 }
 
   render() {
-    // console.log(this.state)
     return (
       <div className="App">
         <Toolbar user={this.state.user}/>
         <main style={{marginTop: '64px'}}>
         </main>
-        <Route path='/users/:id/profile' render={()=> (<Profile />)}/>
+        <Route path='/users/:id/profile' render={()=> (<Profile currentUser={this.state.user}/>)}/>
         <Route exact path='/' component={LandingPage}/>
         <Route path='/login' render={() => (<Login handleSubmit={this.logInSubmitHandler}/>)}/>
         <Route path='/signup' render={() => (<Signup handleSubmit={this.signUpSubmitHandler}/>)}/>
-        <Route path='/explore' render={()=> (<Explore/>)} />
+        <Route path='/explore' render={()=> (<Explore currentUser={this.state.user}/>)} />
         <Route path='/addphoto' render={() => (<UploadPhoto user={this.state.user}/>)}/>
       </div>
     );

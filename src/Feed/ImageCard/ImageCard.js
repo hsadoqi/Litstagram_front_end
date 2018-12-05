@@ -22,8 +22,6 @@ export default class ImageCard extends Component {
     render(){
         if(this.state.image){
             image = this.state.image.attributes
-            console.log(image)
-            // let arrayOfLikers = image.likers.map((liker) => liker.username)
 
             return (
                 <Card onClick={(e) => this.props.handleClick(e, this.state.image)}>
