@@ -19,7 +19,6 @@ class Profile extends Component {
 
     componentDidMount(){
         let id = Number(this.props.match.params.id)
-        console.log(id)
 
         fetch(`${USERS_URL}/${id}`)
         .then(res => res.json())
@@ -34,7 +33,6 @@ class Profile extends Component {
     }
 
     render(){
-        console.log(this.props)
         return (
             <React.Fragment>
                 <div className='profile-info'>
@@ -47,9 +45,7 @@ class Profile extends Component {
                         <p>I like pool.</p>
                     </div>
                 </div>
-
-                <Feed posts={this.state.posts} user={this.state.username}/>
-
+                <Feed posts={this.state.posts} user={this.state.username} user_id={this.state.id} currentUser={this.props.currentUser}/>
             </React.Fragment>
         )
     }
